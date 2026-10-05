@@ -6,7 +6,7 @@ Merci de votre intérêt pour ce cours. Les corrections (faute, exemple erroné,
 
 Ouvrez une **issue** en précisant :
 
-- le fichier et la section concernés (par exemple `02_contrat_api.md`, section 2.3) ;
+- le fichier et la section concernés (par exemple `08_contrat_api_openapi.md`, section 8.4) ;
 - ce qui est incorrect ou peu clair ;
 - si possible, la correction proposée et une source (documentation officielle).
 
@@ -14,7 +14,7 @@ Pour une question de compréhension, précisez ce que vous avez essayé et ce qu
 
 ## Organisation des branches
 
-Le dépôt suit une organisation inspirée de **Git Flow**, la même que celle enseignée au chapitre 4 :
+Le dépôt suit une organisation inspirée de **Git Flow**, la même que celle enseignée au chapitre 10 :
 
 | Branche | Rôle |
 |---|---|
@@ -64,8 +64,8 @@ Les messages suivent la convention **Conventional Commits**, en français :
 Exemples :
 
 ```text
-docs: ajouter un exemple de pagination au chapitre 2
-fix: corriger l'exemple MSW du chapitre 3
+docs: ajouter un exemple de pagination au chapitre 3
+fix: corriger l'exemple MSW du chapitre 9
 chore: mettre à jour le .gitignore
 ```
 
@@ -73,13 +73,13 @@ Un commit correspond à une modification cohérente. Éviter les commits du type
 
 ## Règles de rédaction
 
-- Écrire en français, avec un vocabulaire accessible aux débutants. Tout nouveau terme technique est ajouté au glossaire (chapitre 12).
+- Écrire en français, avec un vocabulaire accessible aux débutants. Tout nouveau terme technique est ajouté au glossaire (chapitre 15).
 - Pas d'emoji.
 - Pas de tiret cadratin ni de tiret utilisé comme ponctuation : utiliser les deux points, une virgule ou une nouvelle phrase.
 - Les exemples de code doivent être **exacts et testés** : les apprenants les copient tels quels.
 - Indiquer le langage de chaque bloc de code (`yaml`, `json`, `js`, `bash`, `text`...).
-- Utiliser les conventions du cours : routes préfixées par `/api`, champs JSON en `camelCase`, format d'erreur du chapitre 2.
-- Garder la cohérence entre les chapitres : si une modification touche une notion présente ailleurs, mettre à jour les autres chapitres et la checklist de démarrage (chapitre 11).
+- Utiliser les conventions du cours : routes préfixées par `/api`, champs JSON en `camelCase`, format d'erreur du chapitre 3.
+- Garder la cohérence entre les chapitres : si une modification touche une notion présente ailleurs, mettre à jour les autres chapitres et la checklist de démarrage (chapitre 13).
 - Ne jamais inclure de vraie donnée personnelle, de secret ou de nom de domaine personnel dans un exemple.
 
 ## Licence
