@@ -1,24 +1,8 @@
-# 3. Travailler en parallèle grâce aux mocks
+# 9. Travailler en parallèle grâce aux mocks
 
-## 3.1 Le problème « le Frontend attend le Backend »
+## 9.1 Ne plus attendre
 
-C'est une source classique de conflit.
-
-Au lieu de faire :
-
-```text
-Le Backend termine
-       ↓
-Le Frontend attend
-       ↓
-Intégration
-       ↓
-Problèmes
-       ↓
-Corrections
-```
-
-Faites :
+Le problème « le Frontend attend le Backend » (chapitre 2) disparaît quand les deux équipes travaillent à partir du même contrat :
 
 ```text
        CONTRAT D'API
@@ -47,7 +31,7 @@ Par exemple, d'après le contrat, `GET /api/users/15` renvoie :
 
 Le Frontend construit son interface avec cette structure sans attendre que l'API soit terminée. Quand l'API réelle est prête, on remplace le mock par la vraie URL : si les deux équipes ont respecté le contrat, l'intégration se passe sans surprise.
 
-## 3.2 Trois façons de simuler l'API
+## 9.2 Trois façons de simuler l'API
 
 ### Prism : un mock généré depuis le contrat
 
@@ -57,7 +41,9 @@ Prism lit le fichier OpenAPI et démarre un faux serveur qui répond avec les ex
 npx @stoplight/prism-cli mock docs/openapi.yaml
 ```
 
-Le mock écoute par défaut sur `http://127.0.0.1:4010`. C'est la solution la plus fiable : le mock est **toujours** conforme au contrat, puisqu'il est généré à partir de lui.
+Le mock écoute par défaut sur `http://127.0.0.1:4010`. C'est la solution la plus fiable : le mock est **toujours** conforme au contrat, puisqu'il est généré à partir de lui. Il vérifie aussi les requêtes : une donnée invalide reçoit une erreur `400`, une route protégée appelée sans token reçoit une erreur `401`.
+
+L'installation dans le projet et le branchement avec Vite sont détaillés au chapitre 14.
 
 ### MSW : intercepter les requêtes dans le navigateur
 
@@ -114,13 +100,13 @@ enableMocks().then(() => {
 });
 ```
 
-Avantage : les mêmes handlers servent aussi dans les tests du Frontend.
+Avantage : les mêmes handlers servent aussi dans les tests du Frontend. Inconvénient : les réponses sont écrites à la main, il faut veiller à ce qu'elles restent conformes au contrat.
 
 ### json-server : une fausse API à partir d'un fichier JSON
 
 Pour un prototype rapide, `json-server` crée une API complète à partir d'un fichier `db.json`. Il ne respecte pas forcément le contrat (format d'erreur, pagination) : à réserver aux tout premiers essais.
 
-## 3.3 Bonnes pratiques
+## 9.3 Bonnes pratiques
 
 - Les données du mock viennent des **exemples du contrat**, pas de l'imagination du développeur Frontend.
 - Simuler aussi les **erreurs** (`400`, `401`, `409`, `500`) et les **temps de chargement** : l'interface doit les gérer avant l'intégration.

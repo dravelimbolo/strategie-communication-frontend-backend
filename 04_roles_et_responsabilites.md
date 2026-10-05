@@ -1,8 +1,8 @@
-# 6. Qui fait quoi
+# 4. Rôles et responsabilités
 
-## 6.1 Un tableau des responsabilités
+## 4.1 Un tableau des responsabilités
 
-Chaque sujet a **un responsable** clairement identifié. Les autres sont consultés ou simplement informés.
+Chaque sujet a **un responsable** clairement identifié. Les autres sont consultés ou simplement informés. Cela règle le problème « personne ne sait qui est responsable » (chapitre 2).
 
 Légende :
 
@@ -19,6 +19,7 @@ Légende :
 | Messages d'erreur affichés à l'utilisateur | Responsable | Consulté |
 | Validation des formulaires (confort utilisateur) | Responsable | Consulté |
 | Mocks | Responsable | Consulté |
+| Conventions communes | Partagé | Partagé |
 | Contrat d'API | Partagé | Partagé |
 | Routes de l'API | Consulté | Responsable |
 | Validation serveur (sécurité) | Informé | Responsable |
@@ -26,14 +27,28 @@ Légende :
 | Base de données | Informé | Responsable |
 | Authentification côté serveur | Consulté | Responsable |
 | Configuration CORS | Consulté | Responsable |
-| Documentation de l'API | Consulté | Responsable |
+| Documentation de l'API (Swagger) | Consulté | Responsable |
 | Sécurité de l'API | Consulté | Responsable |
 | Tests d'intégration | Partagé | Partagé |
 | Intégration | Partagé | Partagé |
 
 Le plus important est que **la responsabilité soit claire**, tout en permettant aux deux équipes de discuter des décisions qui ont un impact sur l'autre.
 
-## 6.2 La validation se fait des deux côtés
+## 4.2 Les rôles dans l'équipe
+
+En plus de la répartition Frontend / Backend, quelques rôles facilitent la collaboration :
+
+| Rôle | Mission |
+|---|---|
+| Référent Frontend | Relit les pull requests du Frontend, représente l'équipe Frontend dans les décisions |
+| Référent Backend | Relit les pull requests du Backend, représente l'équipe Backend dans les décisions |
+| Gardien du contrat d'API | Vérifie que chaque changement du contrat est validé par les deux équipes |
+| Animateur des rituels | Lance les réunions à l'heure et veille à leur durée (rôle tournant) |
+| Mentor ou responsable technique | Arbitre les désaccords qui ne trouvent pas de solution |
+
+Dans une petite équipe, une même personne peut tenir plusieurs rôles. Les référents sont déclarés dans le fichier `CODEOWNERS` (chapitre 10).
+
+## 4.3 La validation se fait des deux côtés
 
 C'est une confusion fréquente chez les débutants : « le formulaire vérifie déjà l'email, donc le Backend n'a pas besoin de le faire ».
 
@@ -45,9 +60,9 @@ C'est faux. N'importe qui peut appeler l'API directement (avec `curl`, Postman o
 | Contournable | Oui | Non |
 | Obligatoire | Recommandée | **Toujours** |
 
-Les deux validations appliquent **les mêmes règles**, celles écrites dans le contrat d'API (longueur minimale, format d'email, champs obligatoires).
+Les deux validations appliquent **les mêmes règles**, celles écrites dans le contrat d'API (longueur minimale, format d'email, champs obligatoires). Le chapitre 14 montre comment le Backend peut appliquer automatiquement les règles du contrat.
 
-## 6.3 Le binôme Frontend + Backend
+## 4.4 Le binôme Frontend + Backend
 
 Pour des académiciens Fullstack, il est souvent plus formateur de faire travailler **un binôme Frontend + Backend sur une même fonctionnalité**, plutôt que de confier tout le Frontend à une équipe et tout le Backend à une autre.
 

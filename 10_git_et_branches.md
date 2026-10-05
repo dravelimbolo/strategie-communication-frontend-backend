@@ -1,6 +1,8 @@
-# 4. Git, branches et pull requests
+# 10. Git, branches et pull requests
 
-## 4.1 Organisation des branches
+Ce chapitre met en pratique, dans Git et GitHub, les conventions (chapitre 3) et les règles (chapitre 5) du contrat d'équipe.
+
+## 10.1 Organisation des branches
 
 Les deux équipes suivent une organisation de type **Git Flow** :
 
@@ -25,7 +27,7 @@ main ─────────────────────────
 
 Chaque développeur travaille sur sa propre branche. Les branches sont courtes : quelques jours au maximum. Plus une branche vit longtemps, plus les conflits de fusion sont nombreux.
 
-## 4.2 Le chemin d'une modification
+## 10.2 Le chemin d'une modification
 
 ```text
 Développeur
@@ -51,9 +53,9 @@ La CI et la relecture se font en parallèle : un relecteur ne perd pas de temps 
 
 Le déploiement en staging et en production est détaillé dans le cours [Stratégies de déploiement](https://github.com/dravelimbolo/strategies-deploiement-react-express) (chapitre 10).
 
-## 4.3 Ce qui protège vraiment le travail des autres
+## 10.3 Ce qui protège vraiment le travail des autres
 
-Les branches seules n'empêchent pas un développeur de modifier le code de l'autre équipe : sur sa branche, n'importe qui peut modifier n'importe quel fichier. Trois mécanismes GitHub le garantissent.
+Les branches seules n'empêchent pas un développeur de modifier le code de l'autre équipe : sur sa branche, n'importe qui peut modifier n'importe quel fichier. Trois mécanismes GitHub appliquent réellement la règle « ne pas modifier le travail de l'autre sans discussion ».
 
 ### La protection des branches
 
@@ -66,17 +68,18 @@ Dans Settings > Branches (ou Rules), pour `main` et `develop` :
 
 ### Le fichier CODEOWNERS
 
-Le fichier `.github/CODEOWNERS` désigne les responsables de chaque partie du code :
+Le fichier `.github/CODEOWNERS` désigne les responsables de chaque partie du code (les référents du chapitre 4) :
 
 ```text
-# Le Frontend est relu par l'équipe Frontend
-/frontend/                @equipe-frontend-lead
+# Le Frontend est relu par le référent Frontend
+/frontend/                @referent-frontend
 
-# Le Backend est relu par l'équipe Backend
-/backend/                 @equipe-backend-lead
+# Le Backend est relu par le référent Backend
+/backend/                 @referent-backend
 
-# Le contrat d'API est relu par les deux équipes
-/docs/openapi.yaml        @equipe-frontend-lead @equipe-backend-lead
+# Le contrat d'API et le contrat d'équipe sont relus par les deux
+/docs/openapi.yaml        @referent-frontend @referent-backend
+/docs/contrat-equipe.md   @referent-frontend @referent-backend
 ```
 
 On y met des noms d'utilisateurs GitHub (`@pseudo`) ou, dans une organisation GitHub, des équipes (`@organisation/equipe-frontend`).
@@ -87,7 +90,7 @@ En activant **Require review from Code Owners** dans la protection de branche, u
 
 Une pull request est le lieu officiel de discussion sur le code : les questions, les remarques et les décisions y restent écrites et retrouvables.
 
-## 4.4 Modèle de pull request
+## 10.4 Modèle de pull request
 
 Un fichier `.github/pull_request_template.md` pré-remplit chaque pull request :
 
@@ -114,7 +117,7 @@ Lien vers le ticket : #
 
 La case « Impact sur l'autre équipe » oblige à se poser la question avant chaque fusion.
 
-## 4.5 Messages de commit
+## 10.5 Messages de commit
 
 Les deux équipes utilisent la convention **Conventional Commits**, avec la partie concernée entre parenthèses :
 
@@ -138,9 +141,9 @@ chore: mettre à jour les dépendances
 
 L'historique Git devient lisible par les deux équipes : on voit immédiatement ce qui touche l'API.
 
-## 4.6 Monorepo ou deux dépôts
+## 10.6 Monorepo ou deux dépôts
 
-- **Monorepo** (`frontend/` et `backend/` dans le même dépôt) : une seule pull request peut modifier le contrat, le Backend et le Frontend ensemble. Recommandé pour une petite équipe ou un projet d'académiciens.
+- **Monorepo** (`frontend/`, `backend/` et `docs/` dans le même dépôt) : une seule pull request peut modifier le contrat, le Backend et le Frontend ensemble. Recommandé pour une petite équipe ou un projet d'académiciens.
 - **Deux dépôts** : chaque équipe est plus autonome, mais le contrat doit être partagé et versionné avec soin.
 
 Ce choix est détaillé dans le cours [Stratégies de déploiement](https://github.com/dravelimbolo/strategies-deploiement-react-express) (chapitres 2 à 4).

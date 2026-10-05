@@ -1,6 +1,6 @@
-# 7. Les tickets comme outil de collaboration
+# 11. Les tickets comme outil de collaboration
 
-## 7.1 Écrire plutôt que reprocher
+## 11.1 Écrire plutôt que reprocher
 
 Au lieu de dire :
 
@@ -8,9 +8,9 @@ Au lieu de dire :
 
 On crée un ticket qui décrit précisément le besoin. Si le résultat ne correspond pas, on compare au ticket : la discussion porte sur un document, pas sur une personne.
 
-Une règle simple : **une demande qui n'est pas écrite dans un ticket n'existe pas**.
+C'est l'application de la règle du chapitre 5 : **une demande qui n'est pas écrite dans un ticket n'existe pas**.
 
-## 7.2 Un bon ticket
+## 11.2 Un bon ticket
 
 Exemple de ticket (issue GitHub) :
 
@@ -21,7 +21,7 @@ Exemple de ticket (issue GitHub) :
 Lié à : #140 (formulaire d'inscription, Frontend)
 
 Route
-POST /api/users
+POST /api/users (voir docs/openapi.yaml, opération createUser)
 
 Authentification
 Aucune (route publique d'inscription)
@@ -51,6 +51,7 @@ Erreurs (format d'erreur commun)
 Critères d'acceptation
 - [ ] Route conforme au contrat docs/openapi.yaml
 - [ ] Tests des cas 201, 400 et 409
+- [ ] Visible dans la documentation Swagger
 - [ ] Déployée en staging
 ```
 
@@ -61,14 +62,14 @@ Un bon ticket contient toujours :
 - un titre clair, qui commence par un verbe ;
 - l'équipe concernée ;
 - les liens vers les tickets liés ;
-- la description précise du besoin (ou le lien vers la partie du contrat) ;
+- la description précise du besoin, ou le lien vers l'opération du contrat d'API ;
 - des **critères d'acceptation** vérifiables.
 
-## 7.3 Modèles d'issues
+## 11.3 Modèles d'issues
 
 GitHub permet de proposer des modèles dans `.github/ISSUE_TEMPLATE/` : un modèle « Nouvelle route d'API », un modèle « Bug », un modèle « Fonctionnalité Frontend ». Chaque ticket est alors créé avec les bonnes rubriques déjà présentes.
 
-## 7.4 Labels
+## 11.4 Labels
 
 Des labels communs permettent de filtrer les tickets :
 
@@ -80,7 +81,7 @@ Des labels communs permettent de filtrer les tickets :
 | `bug` | Comportement incorrect |
 | `bloquant` | Empêche une autre équipe d'avancer |
 
-## 7.5 Un tableau Kanban partagé
+## 11.5 Un tableau Kanban partagé
 
 Un **GitHub Project** affiche tous les tickets des deux équipes sur un même tableau :
 
@@ -94,5 +95,5 @@ Un **GitHub Project** affiche tous les tickets des deux équipes sur un même ta
 ```
 
 - Chacun voit en temps réel où en est l'autre équipe.
-- Un ticket n'arrive dans « Terminé » que s'il respecte la Definition of Done (chapitre 10).
+- Un ticket n'arrive dans « Terminé » que s'il respecte la Definition of Done (chapitre 5).
 - Une pull request mentionne son ticket (`Closes #142`) : le ticket se ferme automatiquement à la fusion.
