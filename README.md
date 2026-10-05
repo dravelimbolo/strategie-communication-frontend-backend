@@ -26,10 +26,10 @@ _Faire travailler une équipe Frontend React et une équipe Backend Express ense
 <div align="center">
 
 ```
-Contrat d'API   ·   Mocks   ·   Git Flow   ·   Tickets   ·   Definition of Done
+Problèmes   ·   Conventions   ·   Rôles   ·   Règles   ·   Rituels   ·   Contrat   ·   OpenAPI
 ```
 
-_Le lien entre le Frontend et le Backend n'est pas seulement GitHub : c'est un contrat, des tickets et une communication claire._
+_Le lien entre le Frontend et le Backend n'est pas seulement GitHub : c'est d'abord un contrat d'équipe, puis un contrat d'API._
 
 </div>
 
@@ -59,28 +59,31 @@ _Le lien entre le Frontend et le Backend n'est pas seulement GitHub : c'est un c
 ## Le modèle de collaboration
 
 ```
-Ticket  ──>  Contrat d'API (OpenAPI)  ──>  Frontend + mocks  |  Backend
-        ──>  Pull Requests + relecture + CI  ──>  develop (staging)  ──>  main (production)
+Problèmes récurrents  ──>  Conventions · Rôles · Règles · Rituels  ──>  Contrat d'équipe
+                      ──>  Contrat d'API (OpenAPI + Swagger)  ──>  Mocks · Git · Tickets
 ```
 
 ```
 strategie-communication-frontend-backend/
-├── 01_introduction_et_objectifs.md        # Le problème, l'idée centrale, les objectifs
-├── 02_contrat_api.md                      # OpenAPI · format d'erreur · pagination · nommage
-├── 03_travailler_en_parallele.md          # Mocks avec Prism, MSW, json-server
-├── 04_git_et_branches.md                  # Git Flow · CODEOWNERS · modèle de PR · commits
-├── 05_conventions_communes.md             # Conventions · .env.example · proxy Vite · CORS
-├── 06_roles_et_responsabilites.md         # Qui fait quoi · validation des deux côtés · binôme
-├── 07_tickets_et_suivi.md                 # Bon ticket · labels · tableau Kanban
-├── 08_rituels_et_communication.md         # Daily · canaux · relecture bienveillante · désaccords
-├── 09_gerer_les_changements_api.md        # Changements cassants · transition · versionnement
-├── 10_definition_of_done.md               # Définition commune de « terminé »
-├── 11_modele_recommande_et_regles.md      # Modèle complet · 5 règles · checklist de démarrage
-├── 12_glossaire.md                        # Termes expliqués simplement
-├── 13_travaux_pratiques.md                # 8 TP en binôme Frontend + Backend
-├── assets/                                # Logo Akieni Academy
-├── CONTRIBUTING.md                        # Guide de contribution
-├── LICENSE                                # Licence CC BY 4.0
+├── 01_introduction_et_definitions.md          # Définitions, démarche, objectifs
+├── 02_problemes_recurrents.md                 # Les conflits classiques et leurs causes
+├── 03_conventions_communes.md                 # Code · API (nommage, erreurs, pagination) · Git · env
+├── 04_roles_et_responsabilites.md             # Qui fait quoi · référents · validation des deux côtés
+├── 05_regles_d_equipe.md                      # 5 règles fondamentales · Definition of Done
+├── 06_rituels_et_communication.md             # Daily · canaux · relecture bienveillante · désaccords
+├── 07_contrat_d_equipe.md                     # Modèle de contrat · atelier de lancement
+├── 08_contrat_api_openapi.md                  # OpenAPI · design-first · lire un contrat
+├── 09_travailler_en_parallele.md              # Mocks avec Prism, MSW, json-server
+├── 10_git_et_branches.md                      # Git Flow · CODEOWNERS · modèle de PR · commits
+├── 11_tickets_et_suivi.md                     # Bon ticket · labels · tableau Kanban
+├── 12_gerer_les_changements_api.md            # Changements cassants · transition · versionnement
+├── 13_modele_recommande.md                    # Modèle complet · checklist de démarrage
+├── 14_bonus_installer_openapi_swagger.md      # Installation et configuration pas à pas
+├── 15_glossaire.md                            # Termes expliqués simplement
+├── 16_travaux_pratiques.md                    # 10 TP en binôme Frontend + Backend
+├── assets/                                    # Logo Akieni Academy
+├── CONTRIBUTING.md                            # Guide de contribution
+├── LICENSE                                    # Licence CC BY 4.0
 └── README.md
 ```
 
@@ -88,14 +91,14 @@ strategie-communication-frontend-backend/
 
 | Notion | Mise en oeuvre dans le cours |
 |---|---|
-| **Contrat d'API** | Fichier OpenAPI validé par les deux équipes avant de coder, format d'erreur unique |
-| **Travail en parallèle** | Le Frontend avance avec des mocks (Prism, MSW) pendant que le Backend code l'API |
-| **Git en équipe** | Git Flow, protection des branches, `CODEOWNERS`, modèle de pull request, Conventional Commits |
-| **Responsabilités** | Tableau « qui fait quoi », validation côté Frontend et côté Backend |
-| **Suivi** | Tickets clairs avec critères d'acceptation, labels, tableau Kanban GitHub |
-| **Communication** | Rituels courts, bon canal pour chaque message, relecture de code bienveillante |
-| **Évolution de l'API** | Changements compatibles ou cassants, période de transition, versionnement |
-| **Qualité** | Une Definition of Done commune aux deux équipes |
+| **Problèmes récurrents** | Reconnaître les conflits classiques et leur cause commune : l'absence d'accord écrit |
+| **Conventions** | Nommage, format d'erreur, pagination, outils de qualité, environnements partagés |
+| **Responsabilités** | Tableau « qui fait quoi », référents, validation côté Frontend et côté Backend |
+| **Règles et rituels** | 5 règles fondamentales, Definition of Done, daily, relecture de code bienveillante |
+| **Contrat d'équipe** | Tous les accords rassemblés dans un document validé lors d'un atelier de lancement |
+| **Contrat d'API** | Fichier OpenAPI écrit avant le code et relu par les deux équipes |
+| **Swagger en pratique** | Swagger UI, validation automatique des requêtes, lint Redocly, mock Prism, CI |
+| **Outillage** | Mocks, Git Flow, `CODEOWNERS`, tickets, gestion des changements d'API |
 
 ---
 
@@ -105,13 +108,14 @@ strategie-communication-frontend-backend/
 
 | Étape | Chapitres | Objectif |
 |---|---|---|
-| **1** | [01](01_introduction_et_objectifs.md) | Comprendre pourquoi les équipes entrent en conflit |
-| **2** | [02](02_contrat_api.md) et [03](03_travailler_en_parallele.md) | Écrire un contrat et travailler avec des mocks |
-| **3** | [04](04_git_et_branches.md) à [07](07_tickets_et_suivi.md) | Organiser Git, les conventions, les rôles et les tickets |
-| **4** | [08](08_rituels_et_communication.md) à [10](10_definition_of_done.md) | Communiquer, faire évoluer l'API, définir « terminé » |
-| **5** | [11](11_modele_recommande_et_regles.md) puis [13](13_travaux_pratiques.md) | Appliquer le modèle complet en binôme |
+| **1** | [01](01_introduction_et_definitions.md) et [02](02_problemes_recurrents.md) | Définir les notions et comprendre les problèmes récurrents |
+| **2** | [03](03_conventions_communes.md) à [06](06_rituels_et_communication.md) | Se mettre d'accord : conventions, responsabilités, règles, rituels |
+| **3** | [07](07_contrat_d_equipe.md) | Rassembler ces accords dans le contrat d'équipe |
+| **4** | [08](08_contrat_api_openapi.md) puis [14](14_bonus_installer_openapi_swagger.md) | Écrire le contrat d'API, installer et configurer OpenAPI et Swagger |
+| **5** | [09](09_travailler_en_parallele.md) à [13](13_modele_recommande.md) | Outiller la collaboration : mocks, Git, tickets, changements d'API |
+| **6** | [16](16_travaux_pratiques.md) | Appliquer tout le modèle en binôme |
 
-> Le [glossaire](12_glossaire.md) explique simplement chaque terme technique.
+> Le [glossaire](15_glossaire.md) explique simplement chaque terme technique.
 
 ### Cours associé
 
