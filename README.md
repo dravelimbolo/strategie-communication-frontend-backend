@@ -1,6 +1,6 @@
 <div align="center">
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Inter&weight=900&size=40&duration=2800&pause=1200&color=E8590C&center=true&vCenter=true&width=700&height=90&lines=Strat%C3%A9gie+de+communication;Frontend+%2B+Backend)](https://github.com/dravelimbolo/strategie-communication-frontend-backend)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Inter&weight=900&size=40&duration=2800&pause=1200&color=A27DFF&center=true&vCenter=true&width=700&height=90&lines=Strat%C3%A9gie+de+communication;Frontend+%2B+Backend)](https://github.com/dravelimbolo/strategie-communication-frontend-backend)
 
 **`Cours · Collaboration · Contrat d'API · Git Flow · Code review · Agile`**
 
@@ -15,9 +15,9 @@ _Faire travailler une équipe Frontend React et une équipe Backend Express ense
 
 <br/>
 
-[![Akieni Academy](https://img.shields.io/badge/Akieni_Academy-mentorat-E8590C.svg)](#mentorat)
-[![Licence CC BY 4.0](https://img.shields.io/badge/licence-CC_BY_4.0-E8590C.svg)](LICENSE)
-[![PRs bienvenues](https://img.shields.io/badge/PRs-bienvenues-E8590C.svg)](CONTRIBUTING.md)
+[![Akieni Academy](https://img.shields.io/badge/Akieni_Academy-mentorat-A27DFF.svg)](#mentorat)
+[![Licence CC BY 4.0](https://img.shields.io/badge/licence-CC_BY_4.0-A27DFF.svg)](LICENSE)
+[![PRs bienvenues](https://img.shields.io/badge/PRs-bienvenues-A27DFF.svg)](CONTRIBUTING.md)
 
 </div>
 
